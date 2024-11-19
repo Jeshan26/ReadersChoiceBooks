@@ -14,6 +14,10 @@ This is a **Bookstore Application** that allows users to browse, search, and pur
 - **Backend:** Node.js, Express  
 - **Database:** MongoDB  
 
+## Software used for communication-
+- Jira
+## Software used for canva-
+- Mockup,Canva
 ## Getting Started
 
 ### Prerequisites
