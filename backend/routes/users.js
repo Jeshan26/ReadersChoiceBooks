@@ -20,6 +20,12 @@ router.post('/sign-up', async (req, res) => {
         {
             return res.status(400).json({ message: "Username already exists" });
         }
+        const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+        // Check if the email is valid
+        if (!emailRegex.test(email)) {
+          return res.status(400).json({ message: "Invalid email format" });
+        }
         // check email already exists
         const existingEmail = await User.findOne({email: email});
         if(existingEmail)
