@@ -3,19 +3,25 @@ const User = require('../models/user');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const {authenticateToken} = require('./userAuthentication');
+const validator = require('validator');
 
 // signup route
 router.post('/sign-up', async (req, res) => {
     try
     {
         const {username,email,password,address} = req.body;
+        // Sanitize the user input
+        const sanitizedUsername = validator.escape(username);
+        const sanitizedEmail = validator.escape(email);
+        const sanitizedAddress = validator.escape(address);
+
         // check username length is more that 4
         if(username.length <= 4)
         {
             return res.status(400).json({ message: "Username should be more than 4 characters" });
         }
         // check username already exists
-        const existingUsername = await User.findOne({username: username});
+        const existingUsername = await User.findOne({username: sanitizedUsername});
         if(existingUsername)
         {
             return res.status(400).json({ message: "Username already exists" });
@@ -23,11 +29,11 @@ router.post('/sign-up', async (req, res) => {
         const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
 
         // Check if the email is valid
-        if (!emailRegex.test(email)) {
+        if (!emailRegex.test(sanitizedEmail)) {
           return res.status(400).json({ message: "Invalid email format" });
         }
         // check email already exists
-        const existingEmail = await User.findOne({email: email});
+        const existingEmail = await User.findOne({email: sanitizedEmail});
         if(existingEmail)
         {
             return res.status(400).json({ message: "Email already exists" });
@@ -39,7 +45,7 @@ router.post('/sign-up', async (req, res) => {
         }
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const newUser = new User({username:username,email:email,password:hashedPassword,address:address});
+        const newUser = new User({username:sanitizedUsername,email:sanitizedEmail,password:hashedPassword,address:sanitizedAddress});
         await newUser.save();
         return res.status(200).json({ message: "user sign-in successful" });
 
