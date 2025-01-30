@@ -1,4 +1,5 @@
 import React from 'react';
+
 const Navbar = () => {
   const links = [
     {title:'Home', link: '/'},
