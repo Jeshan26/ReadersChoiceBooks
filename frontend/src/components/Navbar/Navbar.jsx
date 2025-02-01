@@ -10,10 +10,10 @@ const Navbar = () => {
   ];
   return (
     <div className='flex bg-zinc-800 text-white px-8 py-2 items-center justify-between'>
-      <div className='flex item-center'>
+      <Link to="/" className='flex item-center'>
         <img className='h-10 me-4' src="https://cdn-icons-png.flaticon.com/128/10433/10433049.png" alt="book" />
         <h1 className='text-2xl font-semibold flex items-center'>Grizzley Bookstore</h1>
-      </div>
+      </Link>
       <div className='nav-links-bookstore flex gap-4 items-center'>
         <div className='flex gap-4'>
           {links.map((items, i) => <Link to={items.link} className='hover:text-blue-500 transition-all duration-300' key={i}>{items.title}</Link>)}
