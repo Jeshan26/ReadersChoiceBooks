@@ -36,13 +36,13 @@ Welcome to the **Grizzley Bookstore Application**! This app allows users to brow
    cd to the working dictatory 
    ```
 2. Install dependencies: 
-```bash
+   ```bash
    npm install @reduxjs/toolkit react-redux
    npm i react-icons
    ```
 
 3. Start the development server: 
-```bash
+   ```bash
    npm run dev
    ```
 
