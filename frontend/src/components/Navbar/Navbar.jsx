@@ -3,7 +3,6 @@ import React from 'react';
 const Navbar = () => {
   const links = [
     {title:'Home', link: '/'},
-    {title:'About us', link: '/about-us'},
     {title:'All Books', link: '/all-books'},
     {title:'Cart', link: '/cart'},
     {title:'Profile', link: '/profile'},
@@ -19,8 +18,8 @@ const Navbar = () => {
           {links.map((items, i) => <div className='hover:text-blue-500 transition-all duration-300' key={i}>{items.title}</div>)}
         </div>
         <div className='flex gap-4'>
-          <button className='px-2 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>Login</button>
-          <button className='px-2 py-1 bg-blue-500 rounded'>Sign up</button>
+          <button className='px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>Login</button>
+          <button className='px-4 py-1 bg-blue-500 rounded'>Sign up</button>
 
         </div>
       </div>
