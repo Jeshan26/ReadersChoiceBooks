@@ -22,6 +22,10 @@ Welcome to the **Grizzley Bookstore Application**! This app allows users to brow
 
 - Mockup, Canva
 
+## 🧪 Testing Tools
+- **JUnit:** Used for backend unit testing to ensure the quality and reliability of the application logic.
+- **Insomnia:** Used for API testing to ensure proper interaction with the backend services and endpoints.
+
 ## 🏁 Getting Started
 
 ### 🔧 Prerequisites
