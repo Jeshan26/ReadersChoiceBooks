@@ -25,7 +25,7 @@ const Navbar = () => {
           <Link to="/LogIn" className='px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>Login</Link>
           <Link to="/SignUp" className='px-4 py-1 bg-blue-500 rounded'>Sign up</Link>
         </div>
-        <button className='text-white text-2xl hover:text-zinc-400' onClick={() => (setMobileNav=== "hidden" ? setMobileNav("block") : setMobileNav("hidden"))}>
+        <button className='text-white text-2xl hover:text-zinc-400' onClick={() => (MobileNav=== "hidden" ? setMobileNav("block") : setMobileNav("hidden"))}>
           <FaGripLines />
         </button>
       </div>
