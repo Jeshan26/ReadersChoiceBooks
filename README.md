@@ -53,7 +53,7 @@ Welcome to the **Grizzley Bookstore Application**! This app allows users to brow
 
 #### Home Page:- 
 
-![Home Page](./frontend\public\home.png)
+![Home Page](./frontend/public/home.png)
 
 ## 👥 Contributors
 
