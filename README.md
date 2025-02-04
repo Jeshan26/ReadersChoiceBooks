@@ -49,8 +49,11 @@ Welcome to the **Grizzley Bookstore Application**! This app allows users to brow
    ```bash
    npm run dev
    ```
-
 #### Now, your app should be up and running! 🎉
+
+#### Home Page:- 
+
+![Home Page](./frontend\public\home.png)
 
 ## 👥 Contributors
 
