@@ -27,12 +27,27 @@ const Navbar = () => {
       </Link>
       <div className='nav-links-bookstore block md:flex gap-4 items-center'>
         <div className='hidden md:flex gap-4'>
-          {links.map((items, i) => (<Link to={items.link} className='hover:text-blue-500 transition-all duration-300' key={i}>{items.title}{" "}</Link>))}
+          {links.map((items, i) => (
+           <div key={i} className='flex items-center' >
+            {items.title === "Profile" ?  <Link 
+             to={items.link} 
+             className='px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300' 
+             key={i}>{items.title}
+           </Link> :  <Link 
+             to={items.link} 
+             className='hover:text-blue-500 transition-all duration-300' 
+             key={i}>{items.title}{" "}
+           </Link>  }
+           </div>
+            ))}
         </div>
-        <div className='hidden md:flex gap-4'>
+        {isLoggedIn === false && <>
+          <div className='hidden md:flex gap-4'>
           <Link to="/LogIn" className='px-4 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>Login</Link>
           <Link to="/SignUp" className='px-4 py-1 bg-blue-500 rounded'>Sign up</Link>
         </div>
+        </>
+        }
         <button className='block md:hidden text-white text-2xl hover:text-zinc-400' onClick={() => (MobileNav=== "hidden" ? setMobileNav("block") : setMobileNav("hidden"))}>
           <FaGripLines />
         </button>
@@ -42,8 +57,14 @@ const Navbar = () => {
       {links.map((items, i) => (<Link to={items.link} className={`${MobileNav} text-white text-4xl mb-8 font-semibold hover:text-blue-500 transition-all duration-300`} key={i}
       onClick={() => (MobileNav=== "hidden" ? setMobileNav("block") : setMobileNav("hidden"))}
       >{items.title}{" "}</Link>))}
+
+       {isLoggedIn === false && (<>
+       
       <Link to="/LogIn" className={`${MobileNav} px-8 mb-8 py-2 text-3xl font-semibold border border-blue-500 rounded text-white hover:bg-white hover:text-zinc-800 transition-all duration-300`}> Login</Link>
       <Link to="/SignUp" className={`${MobileNav} px-8 mb-8 py-2 text-3xl font-semibold bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300`}>Sign up</Link>    
+   
+       </>
+       )}
     </div>
     </>
   );

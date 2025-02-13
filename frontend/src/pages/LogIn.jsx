@@ -2,6 +2,9 @@ import React from 'react'
 import { useState } from 'react';
 import {Link, useNavigate} from "react-router-dom";
 import axios from "axios";
+import {authActions} from "../store/auth";
+import { useDispatch } from 'react-redux';
+
 
 function LogIn() {
 
@@ -11,6 +14,7 @@ function LogIn() {
     });
   
     const navigate = useNavigate();
+    const dispatch = useDispatch();
   
     const change = (e)=>{
       const {name,value} = e.target;
@@ -25,9 +29,16 @@ function LogIn() {
         }
         else{
           const response = await axios.post("http://localhost:1000/api/v1/login",
-           Values)
-           console.log(response.data);
-         //   navigate("/login");
+           Values
+         );
+
+         dispatch(authActions.login(response.data.role));
+         dispatch(authActions.changeRole());
+         localStorage.setItem("id", response.data.id);
+         localStorage.setItem("token",response.data.token);
+         localStorage.setItem("role",response.data.role);
+
+         navigate("/profile");
         };
       
   
