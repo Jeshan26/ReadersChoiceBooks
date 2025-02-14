@@ -2,6 +2,7 @@ import React,  { useEffect,useState } from 'react'
 import axios from "axios";
 import Loader from '../../components/Loader/Loader';
 import { GrLanguage } from "react-icons/gr";
+import { useSelector } from 'react-redux';
 import { FaHeart,FaShoppingCart  } from "react-icons/fa";
 
 import { useParams } from 'react-router-dom'
@@ -9,6 +10,11 @@ import { useParams } from 'react-router-dom'
 function ViewBookDetails() {
     const { id } = useParams();
     const[Data, setData] = useState({});
+
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const role = useSelector((state) => state.auth.role);
+
+
   useEffect(() => {
       const fetch = async () => {
           
@@ -23,22 +29,23 @@ function ViewBookDetails() {
   return (
     <>
     {Data && (
-        <div className='px-4 md:px-12 py-8 bg-zinc-900 flex flex-col md:flex-row gap-8'>
+        <div className='px-4 md:px-12 py-8 bg-zinc-900 flex flex-col lg:flex-row gap-8'>
         <div className='w-full lg:w-3/6  '>
-           <div className='flex   justify-around bg-zinc-800 p-12 rounded'>
+           <div className='flex flex-col lg:flex-row  justify-around bg-zinc-800 p-12 rounded'>
            <img 
                 src={Data.url} 
                 alt="./" 
-                className='h-[50vh] lg:h-[70vh] rounded ' 
+                className='h-[50vh] md:h-[50vh] lg:h-[70vh] rounded ' 
             />
-            <div className='flex md:flex-col'>
-                <button className='bg-white rounded-full text-3xl p-3 text-red-500'>
-                <FaHeart />
-                </button>
-                <button className='bg-white rounded-full text-3xl p-3 mt-4 text-blue-500'>
-                <FaShoppingCart />
-                </button>
-            </div>
+            {isLoggedIn === true && role ==="user" && 
+                <div className='flex flex-row lg:flex-col items-center justify-between lg:justify-start mt-8 lg:mt-0'>
+                    <button className='bg-white rounded lg:rounded-full text-3xl p-3 mt-4 lg:mt-8 text-red-500 flex items-center justify-center'>
+                    <FaHeart />  <span className='ms-4 block lg:hidden'>Favorites</span>
+                    </button>
+                    <button className='text-white rounded lg:rounded-full text-3xl p-3 mt-4 lg:mt-8 bg-blue-500 flex items-center justify-center'>
+                    <FaShoppingCart /> <span className='ms-4 block lg:hidden'>Add to cart</span>
+                    </button>
+            </div>}
            </div>
         </div>
 

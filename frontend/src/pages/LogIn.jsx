@@ -32,8 +32,8 @@ function LogIn() {
            Values
          );
 
-         dispatch(authActions.login(response.data.role));
-         dispatch(authActions.changeRole());
+         dispatch(authActions.login());
+         dispatch(authActions.changeRole(response.data.role));
          localStorage.setItem("id", response.data.id);
          localStorage.setItem("token",response.data.token);
          localStorage.setItem("role",response.data.role);
