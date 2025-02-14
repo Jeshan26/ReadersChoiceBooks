@@ -11,6 +11,9 @@ import Profile from './pages/Profile';
 import ViewBookDetails from './components/ViewBookDetails/ViewBookDetails';
 import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from './store/auth';
+import Favourites from './components/Profile/Favourites';
+import UserOrderHistry from './components/Profile/UserOrderHistry';
+import Settings from './components/Profile/Settings';
 
 const App = () => {
 // This below code will make the reduc state logged in as per localstorage credentials
@@ -38,7 +41,13 @@ const App = () => {
           <Route exact path='/' element={<Home />} />
           <Route path='/all-books' element={<AllBooks />} />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/profile' element={<Profile />} />
+
+          <Route path="/profile" element={<Profile />}>
+        <Route index element={<Favourites />} />
+        <Route path="/profile/orderHistry" element={<UserOrderHistry />} />
+        <Route path="/profile/settings" element={<Settings />} />
+      </Route>
+
           <Route path='/SignUp' element={<SignUp />} />
           <Route path='/LogIn' element={<LogIn />} />
           <Route path='/view-book-details/:id' element={<ViewBookDetails />} />
