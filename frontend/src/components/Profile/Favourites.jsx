@@ -25,16 +25,22 @@ const Favourites = () => {
   
 
   return (
+    <>
+    {FavouriteBooks && FavouriteBooks.length === 0 && (
+      <div className='text-5xl font-semibold text-zinc-500 flex items-center justify-center w-full h-[100%]'>No Favorite Books</div>
+    )}
+    
     <div className='grid grid-cols-4 gap-4'>
+      
       {FavouriteBooks && 
       FavouriteBooks.map((items,i) => (
       <div key={i}>
         <BookCard data={items} favourite = {true} />
         </div>
 
-      )) }
-
+      ))}
     </div>
+    </>
   )
 };
 
