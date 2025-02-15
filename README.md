@@ -63,4 +63,4 @@ Welcome to the **Grizzley Bookstore Application**! This app allows users to brow
 - **Dikshant Thukral :** dikshant-12
 
 
-- 6.14.0
+- 6.25.20
