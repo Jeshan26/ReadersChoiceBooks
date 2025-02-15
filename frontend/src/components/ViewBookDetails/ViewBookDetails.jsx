@@ -3,7 +3,8 @@ import axios from "axios";
 import Loader from '../../components/Loader/Loader';
 import { GrLanguage } from "react-icons/gr";
 import { useSelector } from 'react-redux';
-import { FaHeart,FaShoppingCart  } from "react-icons/fa";
+import { FaHeart,FaShoppingCart,FaEdit   } from "react-icons/fa";
+import { MdDeleteOutline } from "react-icons/md";
 
 import { useParams } from 'react-router-dom'
 
@@ -24,8 +25,26 @@ function ViewBookDetails() {
       fetch();
   }, []);
 
-   
+  const headers = {
+    id : localStorage.getItem("id"),
+    authorization : `Bearer ${localStorage.getItem("token")}`,
+    bookid : id,
+  }
+   const handleFavorites = async ()=>{
+    const response = await axios.put("http://localhost:1000/api/v1/add-favorite-book",
+        {},
+        { headers }
+    );
+    alert(response.data.message);
+   }
 
+   const handleCart = async() => {
+    const response = await axios.put("http://localhost:1000/api/v1/add-to-cart",
+    {},
+    {headers}
+    );
+    alert(response.data.message);
+   } 
   return (
     <>
     {Data && (
@@ -38,12 +57,24 @@ function ViewBookDetails() {
                 className='h-[50vh] md:h-[50vh] lg:h-[70vh] rounded ' 
             />
             {isLoggedIn === true && role ==="user" && 
-                <div className='flex flex-row lg:flex-col items-center justify-between lg:justify-start mt-8 lg:mt-0'>
-                    <button className='bg-white rounded lg:rounded-full text-3xl p-3 mt-4 lg:mt-8 text-red-500 flex items-center justify-center'>
+                <div className='flex flex-col md:flex-row lg:flex-col items-center justify-between lg:justify-start mt-8 lg:mt-0'>
+                    <button className='bg-white rounded lg:rounded-full text-3xl p-3 mt-4 lg:mt-8 text-red-500 flex items-center justify-center' 
+                        onClick={handleFavorites}>
                     <FaHeart />  <span className='ms-4 block lg:hidden'>Favorites</span>
                     </button>
-                    <button className='text-white rounded lg:rounded-full text-3xl p-3 mt-4 lg:mt-8 bg-blue-500 flex items-center justify-center'>
+                    <button className='text-white rounded  mt-8 md:mt-0 lg:rounded-full text-3xl p-3 lg:mt-8 bg-blue-500 flex items-center justify-center'
+                        onClick={handleCart}
+                    >
                     <FaShoppingCart /> <span className='ms-4 block lg:hidden'>Add to cart</span>
+                    </button>
+            </div>}
+            {isLoggedIn === true && role ==="admin" && 
+                <div className='flex flex-col md:flex-row lg:flex-col items-center justify-between lg:justify-start mt-8 lg:mt-0'>
+                    <button className='bg-white rounded lg:rounded-full text-3xl p-3 mt-4 lg:mt-8  flex items-center justify-center'>
+                    <FaEdit />  <span className='ms-4 block lg:hidden'>Edit book</span>
+                    </button>
+                    <button className='text-red-500 rounded mt-8 md:mt-0 lg:rounded-full text-3xl p-3  lg:mt-8 bg-white flex items-center justify-center'>
+                    <MdDeleteOutline /> <span className='ms-4 block lg:hidden'>Delete Book</span>
                     </button>
             </div>}
            </div>
