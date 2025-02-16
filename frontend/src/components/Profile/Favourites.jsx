@@ -30,7 +30,7 @@ const Favourites = () => {
       <div className='text-5xl font-semibold text-zinc-500 flex items-center justify-center w-full h-[100%]'>No Favorite Books</div>
     )}
     
-    <div className='grid grid-cols-4 gap-4'>
+    <div className='grid grid-cols-4 gap-4 '>
       
       {FavouriteBooks && 
       FavouriteBooks.map((items,i) => (
