@@ -28,7 +28,7 @@ const Profile = () => {
 
       {!Profile && <div className='w-full h-[100%] flex items-center justify-center'> <Loader /> </div>}
       {Profile && <>
-        <div className='w-full md:w-1/6 h-screen '>
+        <div className='w-full md:w-1/6 h-auto  lg:h-screen '>
           <Sidebar data = {Profile}/>
         </div>
         <div className='w-full md:w-5/6'>
