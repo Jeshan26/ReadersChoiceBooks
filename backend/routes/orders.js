@@ -54,8 +54,9 @@ router.get('/order-history', authenticateToken, async (req, res) => {
 // get all orders for admin
 router.get('/all-orders', authenticateToken, async (req, res) => {
     try{
-        const {userid} = req.params;
-        const user = await Order.findById(userid);
+        const { id } = req.headers;
+        // Updated to User.findById(id) as we need to get user role
+        const user = await User.findById(id);
         if (user.role !== "admin") return res.status(403).json({ message: "You are not authorized to perform this action" });
         const userData = await Order.find()
         .populate({
