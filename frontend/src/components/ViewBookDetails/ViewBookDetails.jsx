@@ -5,10 +5,12 @@ import { GrLanguage } from "react-icons/gr";
 import { useSelector } from 'react-redux';
 import { FaHeart,FaShoppingCart,FaEdit   } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 
 function ViewBookDetails() {
+
+    const navigate = useNavigate();
     const { id } = useParams();
     const[Data, setData] = useState({});
 
@@ -44,7 +46,15 @@ function ViewBookDetails() {
     {headers}
     );
     alert(response.data.message);
-   } 
+   };
+   
+   const deleteBook = async () => {
+    const response = await axios.delete("http://localhost:1000/api/v1/delete-book",
+        { headers }
+    );
+   alert(response.data.message);
+   navigate("/all-books");
+   }
   return (
     <>
     {Data && (
@@ -73,7 +83,9 @@ function ViewBookDetails() {
                     <button className='bg-white rounded lg:rounded-full text-3xl p-3 mt-4 lg:mt-8  flex items-center justify-center'>
                     <FaEdit />  <span className='ms-4 block lg:hidden'>Edit book</span>
                     </button>
-                    <button className='text-red-500 rounded mt-8 md:mt-0 lg:rounded-full text-3xl p-3  lg:mt-8 bg-white flex items-center justify-center'>
+                    <button className='text-red-500 rounded mt-8 md:mt-0 lg:rounded-full text-3xl p-3  lg:mt-8 bg-white flex items-center justify-center'
+                        onClick={ deleteBook }
+                    >
                     <MdDeleteOutline /> <span className='ms-4 block lg:hidden'>Delete Book</span>
                     </button>
             </div>}
