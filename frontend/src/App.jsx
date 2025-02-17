@@ -16,6 +16,7 @@ import Favourites from './components/Profile/Favourites';
 import UserOrderHistry from './components/Profile/UserOrderHistry';
 import Settings from './components/Profile/Settings';
 import AddBook from './pages/AddBook';
+import UpdateBook from './pages/UpdateBook';
 
 const App = () => {
 // This below code will make the reduc state logged in as per localstorage credentials
@@ -53,6 +54,7 @@ const App = () => {
 
           <Route path='/SignUp' element={<SignUp />} />
           <Route path='/LogIn' element={<LogIn />} />
+          <Route path='/updateBook/:id' element={<UpdateBook />} />
           <Route path='/view-book-details/:id' element={<ViewBookDetails />} />
         </Routes>
         <Footer/>

@@ -5,7 +5,7 @@ import { GrLanguage } from "react-icons/gr";
 import { useSelector } from 'react-redux';
 import { FaHeart,FaShoppingCart,FaEdit   } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom'
 
 function ViewBookDetails() {
@@ -80,9 +80,12 @@ function ViewBookDetails() {
             </div>}
             {isLoggedIn === true && role ==="admin" && 
                 <div className='flex flex-col md:flex-row lg:flex-col items-center justify-between lg:justify-start mt-8 lg:mt-0'>
-                    <button className='bg-white rounded lg:rounded-full text-3xl p-3 mt-4 lg:mt-8  flex items-center justify-center'>
+                    <Link 
+                        className='bg-white rounded lg:rounded-full text-3xl p-3 mt-4 lg:mt-8  flex items-center justify-center'
+                        to={`/updateBook/${id}`}
+                    >
                     <FaEdit />  <span className='ms-4 block lg:hidden'>Edit book</span>
-                    </button>
+                    </Link>
                     <button className='text-red-500 rounded mt-8 md:mt-0 lg:rounded-full text-3xl p-3  lg:mt-8 bg-white flex items-center justify-center'
                         onClick={ deleteBook }
                     >
