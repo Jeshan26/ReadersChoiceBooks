@@ -17,7 +17,7 @@ const Navbar = () => {
 
 
   if(isLoggedIn === false){
-    links.splice(2,2);
+    links.splice(2,3);
   }
 
   if(isLoggedIn === true && role === "user"){
