@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import AllBooks from './pages/AllBooks';
 import LogIn from './pages/LogIn';
+import AllOrders from './pages/AllOrders';
 import SignUp from './pages/SignUp';
 import Cart from './pages/Cart';
 import Profile from './pages/Profile';
@@ -14,6 +15,7 @@ import { authActions } from './store/auth';
 import Favourites from './components/Profile/Favourites';
 import UserOrderHistry from './components/Profile/UserOrderHistry';
 import Settings from './components/Profile/Settings';
+import AddBook from './pages/AddBook';
 
 const App = () => {
 // This below code will make the reduc state logged in as per localstorage credentials
@@ -43,10 +45,11 @@ const App = () => {
           <Route path='/cart' element={<Cart />} />
 
           <Route path="/profile" element={<Profile />}>
-        <Route index element={<Favourites />} />
-        <Route path="/profile/orderHistry" element={<UserOrderHistry />} />
-        <Route path="/profile/settings" element={<Settings />} />
-      </Route>
+            {role === "user" ?  <Route index element={<Favourites />} /> : <Route index element={<AllOrders />} /> }
+            {role === "admin" && <Route path="/profile/add-book" element={<AddBook />} />}
+            <Route path="/profile/orderHistry" element={<UserOrderHistry />} />
+            <Route path="/profile/settings" element={<Settings />} />
+          </Route>
 
           <Route path='/SignUp' element={<SignUp />} />
           <Route path='/LogIn' element={<LogIn />} />
