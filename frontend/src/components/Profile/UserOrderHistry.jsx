@@ -28,7 +28,7 @@ const UserOrderHistry = () => {
         <div className='h-[80vh] p-4 text-zinc-100 '>
           <div className='h-[100%] flex flex-col items-center justify-center' >
             <h1 className='text-5xl font-semibold text-zinc-500 mb-8'>
-              No order histry
+              No order history
             </h1>
             <img 
               src='./no-user-histry.png' 
@@ -42,7 +42,7 @@ const UserOrderHistry = () => {
         <div className='h-100% p-0 md:p-4 text-zinc-100' >
 
           <h1 className='text-3xl md:text-5xl font-semibold text-zinc-500 mb-8'>
-            Your Order Histry
+            Your Order history
           </h1>
           <div className='mt-4 bg-zinc-800 w-full rounded py-2 px-4 flex gap-2'>
             <div className='w-[3%]'>
