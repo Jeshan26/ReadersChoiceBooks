@@ -12,7 +12,7 @@ const BookCard = ({data , favourite}) => {
   }
 
   const handleRemoveBook = async ()=>{
-    const response = await axios.put("http://localhost:1000/api/v1/remove-favorite-book",
+    const response = await axios.put(`${import.meta.env.VITE_API_URL_DEV}/api/v1/remove-favorite-book`,
       {},
     { headers }
   );

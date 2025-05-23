@@ -15,7 +15,7 @@ const Favourites = () => {
 
   useEffect(() => {
     const fetch = async ()=>{
-      const response = await axios.get("http://localhost:1000/api/v1/get-favorite-books",
+      const response = await axios.get(`${import.meta.env.VITE_API_URL_DEV}/api/v1/get-favorite-books`,
       { headers } 
     );
     setFavouriteBooks(response.data.data);

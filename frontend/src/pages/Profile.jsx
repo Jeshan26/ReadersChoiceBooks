@@ -18,7 +18,7 @@ const Profile = () => {
   }
   useEffect(() => {
     const fetch = async()=>{
-      const response = await axios.get("http://localhost:1000/api/v1/get-user-info",{headers});
+      const response = await axios.get(`${import.meta.env.VITE_API_URL_DEV}/api/v1/get-user-info`,{headers});
      setProfile(response.data.data);
     };
     fetch();

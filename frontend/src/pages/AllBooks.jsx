@@ -11,7 +11,7 @@ function AllBooks() {
       const fetch = async () => {
         // The backend axios was accepting authorization for below URI 
         // but this should be public URI so i made this below api a public api(backend) instead of authorized because this is visible at home page without any kind of authorization.
-          const response = await axios.get('http://localhost:1000/api/v1/get-all-books');
+          const response = await axios.get(`${import.meta.env.VITE_API_URL_DEV}/api/v1/get-all-books`);
           setData(response.data.books);
       };
       fetch();

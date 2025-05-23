@@ -11,7 +11,7 @@ const UpdateBook = () => {
     useEffect(() => {
         const fetch = async () => {
             
-            const response = await axios.get(`http://localhost:1000/api/v1/get-book-by-id/${id}`);
+            const response = await axios.get(`${import.meta.env.VITE_API_URL_DEV}/api/v1/get-book-by-id/${id}`);
             setData(response.data.book);
         };
         fetch();
@@ -54,7 +54,7 @@ const UpdateBook = () => {
             ){
                 alert("All fields are required");
             }else{
-                const response = await axios.put("http://localhost:1000/api/v1/update-book" ,
+                const response = await axios.put(`${import.meta.env.VITE_API_URL_DEV}/api/v1/update-book` ,
                     Data ,
                     { headers }
                 );

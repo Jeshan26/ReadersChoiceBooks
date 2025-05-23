@@ -18,7 +18,7 @@ function Cart() {
 
   useEffect(() => {
     const fetch = async ()=>{
-      const response = await axios.get("http://localhost:1000/api/v1/get-user-cart",
+      const response = await axios.get(`${import.meta.env.VITE_API_URL_DEV}/api/v1/get-user-cart`,
         { headers }
       );
       setCart(response.data.carts);
@@ -27,7 +27,7 @@ function Cart() {
   },[Cart]);
 
   const deleteItem = async (bookid)=> {
-    const response = await axios.put(`http://localhost:1000/api/v1/remove-from-cart/${bookid}`,
+    const response = await axios.put(`${import.meta.env.VITE_API_URL_DEV}/api/v1/remove-from-cart/${bookid}`,
       {},
       { headers }
     );
@@ -36,7 +36,7 @@ function Cart() {
 
   const PlaceOrder = async ()=>{
     try{
-    const response = await axios.post("http://localhost:1000/api/v1/place-order",
+    const response = await axios.post(`${import.meta.env.VITE_API_URL_DEV}/api/v1/place-order`,
       {order : Cart},
       { headers }
     );

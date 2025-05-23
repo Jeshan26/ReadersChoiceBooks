@@ -25,7 +25,7 @@ const AllOrder = () => {
 
   useEffect(() => {
     const fetch = async ()=>{
-      const response = await axios.get("http://localhost:1000/api/v1/all-orders",
+      const response = await axios.get(`${import.meta.env.VITE_API_URL_DEV}/api/v1/all-orders`,
         { headers }
       );
       setAllOrders(response.data.orders);
@@ -46,7 +46,7 @@ const AllOrder = () => {
   const submitChanges = async (i)=>{
     const orderid = AllOrders[i]._id;
     const response = await axios.put(
-      `http://localhost:1000/api/v1/update-status/${orderid}`,
+      `${import.meta.env.VITE_API_URL_DEV}/api/v1/update-status/${orderid}`,
       Values,
       { headers }
     );

@@ -16,7 +16,7 @@ const Settings = () => {
   };
   useEffect( () => {
     const fetch = async ()=>{
-      const response = await axios.get("http://localhost:1000/api/v1/get-user-info",
+      const response = await axios.get(`${import.meta.env.VITE_API_URL_DEV}/api/v1/get-user-info`,
         { headers }
       )
       
@@ -31,7 +31,7 @@ const Settings = () => {
       setValue({...Value, [name] : value})
     }
     const UpdateAddress = async () => {
-      const response = await axios.put("http://localhost:1000/api/v1/update-address",
+      const response = await axios.put(`${import.meta.env.VITE_API_URL_DEV}/api/v1/update-address`,
         Value,
         {headers}
       );
