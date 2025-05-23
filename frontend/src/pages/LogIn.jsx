@@ -48,9 +48,9 @@ function LogIn() {
     }
 
   return (
-    <div className="h-auto bg-zinc-900 px-12 py-8 flex items-center justify-center">
-    <div className="bg-zinc-800 rounded-1g px-8 py-5 w-full md:w-3/6 lg:w-2/6">
-       <p className="text-zinc-200 text-x1">LogIn</p>
+    <div className="min-h-screen h-auto bg-zinc-900 px-12 py-8 flex items-center justify-center">
+    <div className="bg-zinc-800 rounded-lg px-8 py-5 w-full md:w-3/6 lg:w-2/6">
+       <p className="text-zinc-200 text-center text-xl">LogIn</p>
        <div className="mt-4">
           <div>
              <label htmlFor="" className="text-zinc-400">

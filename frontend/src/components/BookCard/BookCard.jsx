@@ -20,7 +20,7 @@ const BookCard = ({data , favourite}) => {
   }
 
   return (
-  <div className='bg-zinc-800 rounded flex flex-col p-4'>
+  <div className='bg-zinc-800 rounded-lg flex flex-col p-4'>
   <Link to={`/view-book-details/${data._id}`}>
   <div className='bg-zinc-800 rounded p-4 flex flex-col'>
     <div className='bg-zinc-900 rounded flex items-center justify-center'>
